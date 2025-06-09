@@ -80,11 +80,25 @@ if user_query:
     st.chat_message("user").write(user_query)
 
     with st.chat_message("assistant"):
-        streamlit_callback=StreamlitCallbackHandler(st.container())
-        response=agent.run(user_query,callbacks=[streamlit_callback])
-        st.session_state.messages.append({"role":"assistant","content":response})
-        st.write(response)
+        try:
+            streamlit_callback=StreamlitCallbackHandler(st.container())
+            response=agent.invoke(
+                {"input": user_query},
+                {"callbacks": [streamlit_callback]}
+            )
+            # Extract the output from the response
+            if isinstance(response, dict) and "output" in response:
+                response_text = response["output"]
+            else:
+                response_text = str(response)
+            
+            st.session_state.messages.append({"role":"assistant","content":response_text})
+            st.write(response_text)
+        except Exception as e:
+            error_message = f"I encountered an error while processing your query. Please try rephrasing your question or check if the data exists in the database."
+            st.error(error_message)
+            st.session_state.messages.append({"role":"assistant","content":error_message})
 
-        
+
 
 
