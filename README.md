@@ -1,5 +1,9 @@
 # 🦜 LangChain: Chat with SQL Database
 
+**Made by Harsh Gidwani**
+
+> **🚀 [Live Demo Available Here](https://sql-db-agent-harshcodess.streamlit.app/)** - Try the application without any setup!
+
 A powerful Streamlit application that allows you to chat with SQL databases using natural language queries powered by LangChain and Groq's Llama model.
 
 ![Demo Screenshot](assets/image.png)
@@ -179,3 +183,7 @@ If you encounter any issues or have questions:
 - [ ] Multiple AI model options
 - [ ] Database schema visualization
 - [ ] Query performance metrics
+
+---
+
+**Made by Harsh Gidwani**
